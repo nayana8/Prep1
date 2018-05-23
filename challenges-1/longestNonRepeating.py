@@ -8,9 +8,8 @@ def longestNonRepeating(word):
     for i,ch in enumerate(word):
         if ch in hashMap and start <= i:
             maxL = max(maxL, i - start)
-            start = i
-        else:
-            hashMap[ch] = True
+            start = hashMap[ch] + 1
+        hashMap[ch] = i
 
     maxL = max(maxL, len(word)-start)
     return maxL
